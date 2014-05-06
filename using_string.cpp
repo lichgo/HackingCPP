@@ -38,5 +38,20 @@ int main()
         cout << line << endl;
     }
     
+    // string s1 = "hello" + "world"; error, not a string object
+    string s1 = "hello";
+    string s2 = s1 + "2world" + "3haha";  // after +, return a string object, so chaining+ is ok
+    
+    // string::size_type
+    int count_digits = 0;
+    for (string::size_type i = 0; i != s2.size(); ++i)
+    {
+        cout << s2[i] << endl;
+        if (isdigit(s2[i])) count_digits++;
+        s2[i]++;
+    }
+    cout << s2 << endl;
+    cout << "The number of digits in s2: " << count_digits << endl;
+    
     return 0;
 }

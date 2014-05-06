@@ -52,6 +52,11 @@ int main_(int argc, const char * argv[])
     enum Forms { shape = 1, sphere, polygon };  // sphere=2, polygon=3
     Forms s = shape;
     
+    // typedef
+    typedef int score;
+    score math_score = 3;
+    
+    std::cout << isdigit('a');
     
     return 0;
 }

@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-int main(int argc, const char * argv[])
+int main_(int argc, const char * argv[])
 {
 
     // iostream
@@ -38,8 +38,20 @@ int main(int argc, const char * argv[])
     int j;  // declare and define
     j = 23;
     //int i = 3;  // error
-    i = 23;
+    // i = 23;  // error here
     // extern int pi = 3;  // declare and define, legal but should be outside a function
+    
+    // references
+    int l = 2014;
+    int &ref_l = l;
+    const int L = 23;
+    const int &ref_L = L;
+    const int &ref_NUMBER = 32;
+    
+    // enum
+    enum Forms { shape = 1, sphere, polygon };  // sphere=2, polygon=3
+    Forms s = shape;
+    
     
     return 0;
 }

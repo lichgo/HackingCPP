@@ -9,6 +9,7 @@
 #include "using_array.h"
 
 using std::cout;
+using std::endl;
 
 int get_size() {
     return 4;
@@ -26,9 +27,12 @@ int main()
     int a4[get_size()];
     int a5[tree_size];
     
-    cout << a1[0] << a3[7];
+    cout << a1[0] << a3[7] << endl;;
     
-    for (int *p = a4; )
+    for (int *p_start = a4, *p_end = a4 + get_size(); p_start != p_end; p_start++)
+    {
+        cout << *p_start << endl;
+    }
     
     
     return 0;

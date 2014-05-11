@@ -19,7 +19,7 @@ size_t count_calls()
     return c++;
 }
 
-int main(int argc, char *argv[])    // int argc, char **argv
+int main_usingfunction(int argc, char *argv[])    // int argc, char **argv
 {
     for (int i = 0; i  != 10; i++)
     {

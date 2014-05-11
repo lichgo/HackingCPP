@@ -15,7 +15,7 @@ void throw_error()
     throw runtime_error("RUNTIME ERROR FROM function.");
 }
 
-int main()
+int main_trycatch()
 {
     int i = 0;
     if (i != 0)
@@ -31,5 +31,6 @@ int main()
         cout << err.what();
     }
     
-    // return 0; this is neglectable
+    // return 0; main allows no return
+    return 0;
 }

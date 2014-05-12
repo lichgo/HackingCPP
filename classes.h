@@ -12,3 +12,8 @@
 #include <iostream>
 
 #endif /* defined(__HackingCPP__classes__) */
+
+class SalesItem
+{
+    
+};

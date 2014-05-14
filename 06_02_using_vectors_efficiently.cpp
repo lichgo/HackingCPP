@@ -1,13 +1,3 @@
-//
-//  06_02_using_vectors_efficiently.cpp
-//  HackingCPP
-//
-//  Created by lichgo on 14/5/14.
-//  Copyright (c) 2014 lichgo. All rights reserved.
-//
-
-#include "06_02_using_vectors_efficiently.h"
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -25,7 +15,7 @@ int main() {
     
     f(vec);
     
-    vec2.reserve(500);
+    vec2.reserve(500);	// better than line 13, because it doesn't initialize the slots in the buffer with anything
     
     return 0;
 }

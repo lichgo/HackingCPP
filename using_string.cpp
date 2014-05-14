@@ -13,7 +13,7 @@ using std::cout;
 using std::string;
 using std::endl;
 
-int main_()
+int main_string()
 {
     string s;
     cin >> s;

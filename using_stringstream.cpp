@@ -16,7 +16,7 @@ using std::endl;
 using std::istringstream;
 using std::ostringstream;
 
-int main()
+int main_stringstream()
 {
     string line, word;
     while (getline(cin, line))

@@ -9,7 +9,7 @@ void f(vector<string>& vec) {
     
 }
 
-int main() {
+int main_0602() {
     vector<string> vec(500);
     vector<string> vec2;
     

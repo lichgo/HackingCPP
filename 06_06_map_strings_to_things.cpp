@@ -4,16 +4,15 @@
 
 using namespace std;
 
-template<typename K>
-template<typename V>
+template<typename V, typename K>
 void printer(const map<K, V>& m) {
 	for (typename map<K, V>::const_iterator iter = m.begin(); iter != m.end(); ++iter) {
 		cout << "KEY: " << iter->first << " VALUE: " << iter->second << endl;
 	}
-	cout << endl;
+	cout << "----------------------" << endl;
 }
 
-int main() {
+int main_0606() {
 	map<string, string> toStr;
 
 	toStr["Monday"] = "MON";
@@ -27,7 +26,7 @@ int main() {
 
 	printer(toStr);
 
-	toStr.erase(toStr.find("Sunday"));
+	//toStr.erase(toStr.find("Sunday")); // error
 	toStr.erase(toStr.find("Friday"));
 
 	printer(toStr);

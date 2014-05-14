@@ -19,7 +19,7 @@ bool inline even(int n) {
 printer<string> strPrinter;
 printer<int> intPrinter;
 
-int main() {
+int main_0605() {
 	list<string> lst1;
 	list<string> lst2;
 
@@ -31,12 +31,12 @@ int main() {
 	lst2.push_front("Two");
 	lst2.push_front("Three");
 
-	for_each(lst1.begin(), lst2.end(), strPrinter);
+	for_each(lst1.begin(), lst1.end(), strPrinter);
 
 	lst1.sort();
 	lst2.sort();
 
-	lst1.merge(lst2);
+	lst1.merge(lst2);   // sorted
 	for_each(lst1.begin(), lst1.end(), strPrinter);
 
 	list<int> intLst;
@@ -46,11 +46,13 @@ int main() {
 	intLst.push_back(4);
 
 	// Remove all elements greater than 2
-	intLst.remove_if(bind2nd(greater<int>(), 2)));
+	intLst.remove_if( bind2nd(greater<int>(), 2) );
 
 	for_each(intLst.begin(), intLst.end(), intPrinter);
 
 	intLst.remove_if(even);
+    
+    for_each(intLst.begin(), intLst.end(), intPrinter);
 
 	return 0;
 }

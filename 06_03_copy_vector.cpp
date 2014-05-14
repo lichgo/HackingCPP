@@ -9,12 +9,12 @@ template<typename T>
 void vecPrint(const vector<T>& vec) {
 	cout << "{ ";
 	for (typename vector<T>::const_iterator p = vec.begin(); p != vec.end(); ++p) {
-		cout << "{" << *p << "}";
+		cout << "[" << *p << "]";
 	}
-	cout >> " }" << endl;
+	cout << " }" << endl;
 }
 
-int main() {
+int main_0603() {
 	vector<string> vec(5);
 	string foo[] = { "My", "way", "or", "the" };
 	

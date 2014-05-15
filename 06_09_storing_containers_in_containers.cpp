@@ -37,7 +37,7 @@ public:
 			conn_->beginTxn();
 
 			// Iterate each set
-			for (SetStr::iterator pSql = p->second->begin(); pSql != p->second->end; ++pSql) {
+			for (SetStr::iterator pSql = p->second->begin(); pSql != p->second->end(); ++pSql) {
 				string s = *pSql;
 				conn_->execSql(s);
 				cout << "Executing SQL: " << s << endl;
@@ -65,7 +65,3 @@ private:
 	MapStr2SetStr log_;
 	DBConn* conn_;
 };
-
-int main_0609() {
-
-}

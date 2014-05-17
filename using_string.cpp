@@ -19,6 +19,9 @@ int main_string()
     cin >> s;
     cout << s << endl;
     
+    // string literal is orignally a c-style char* with NULL at the end
+    string name = "abc";
+    
     int count = 1;
     // read word by word seperated by space
     string word;

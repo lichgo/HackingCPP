@@ -35,7 +35,3 @@ void main_0403() {
     
     for_each(l.begin(), l.end(), write);
 }
-
-int main() {
-    main_0403();
-}

@@ -27,3 +27,14 @@ private:
     unsigned units_sold;
     double revenue;
 };
+
+class MyClass {
+public:
+    MyClass(MyClass const &mc) {
+        // do something
+    }
+    // constructor cannot be declared
+//    MyClass(const MyClass& mc) {
+//        
+//    }
+};

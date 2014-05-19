@@ -17,7 +17,3 @@ void main_0805() {
     cout << b.getCount() << endl;
     cout << c.getCount() << endl;
 }
-
-int main() {
-    main_0805();
-}

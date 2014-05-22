@@ -13,7 +13,7 @@ public:
 int UniqueID::nextID = 0;
 
 UniqueID::UniqueID() {
-    ID = ++nextID;
+    id = ++nextID;
 }
 
 UniqueID::UniqueID(const UniqueID& orig) {

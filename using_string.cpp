@@ -6,12 +6,16 @@
 //  Copyright (c) 2014 lichgo. All rights reserved.
 //
 
-#include "using_string.h"
+//#include "using_string.h"
+
+#include <iostream>
+#include <string>
 
 using std::cin;
 using std::cout;
 using std::string;
 using std::endl;
+
 
 int main_string()
 {

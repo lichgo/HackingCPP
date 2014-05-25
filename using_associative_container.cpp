@@ -8,6 +8,7 @@
 
 #include "using_associative_container.h"
 #include <map>
+#include <string>
 
 using namespace std;
 

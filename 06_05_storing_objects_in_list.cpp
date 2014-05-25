@@ -2,6 +2,7 @@
 #include <list>
 #include <list>
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
@@ -46,7 +47,7 @@ int main_0605() {
 	intLst.push_back(4);
 
 	// Remove all elements greater than 2
-	intLst.remove_if( bind2nd(greater<int>(), 2) );
+	//intLst.remove_if( bind2nd(greater<int>(), 2) );
 
 	for_each(intLst.begin(), intLst.end(), intPrinter);
 

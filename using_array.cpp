@@ -40,7 +40,8 @@ int main_array()
 //        *p_start = 324;
 //    }
     
-    int a5[tree_size];  //error
+    //int a5[tree_size];  //error
+	int a5[12];
     a5[9] = 12;
     cout << "a5 " << a5[9] << endl;
 

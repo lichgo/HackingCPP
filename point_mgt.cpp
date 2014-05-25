@@ -75,7 +75,3 @@ void main_ptrmgt() {
     // p3 is not changed if nothing written in =
     cout << p3.getVal() << endl;    //still 1
 }
-
-int main() {
-    main_ptrmgt();
-}

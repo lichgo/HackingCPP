@@ -3,12 +3,12 @@
 
 using namespace std;
 
-void main_0415(int argc, char** argv) {
+int main_0415(int argc, char* infile, char* outfile) {
 	if (argc < 3)
 		return EXIT_FAILURE;
 
-	ifstream in(argv[1]);
-	ofsteam out(argv[2]);
+	ifstream in(infile);
+	ofstream out(outfile);
 
 	if (!in || !out)
 		return EXIT_FAILURE;
@@ -19,6 +19,8 @@ void main_0415(int argc, char** argv) {
 			out << "   ";
 		else
 			out << c;
+
+		cout << c;
 	}
 
 	out.close();
@@ -31,5 +33,5 @@ void main_0415(int argc, char** argv) {
 }
 
 int main() {
-	main_0415();
+	main_0415(3, "text.md", "result.md");
 }

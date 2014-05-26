@@ -28,7 +28,3 @@ void main_0414() {
 		cout << "FOUNT IT!" << endl;
 	}
 }
-
-int main() {
-	main_0414();
-}

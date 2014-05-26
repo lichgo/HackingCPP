@@ -31,7 +31,3 @@ int main_0415(int argc, char* infile, char* outfile) {
 	else
 		return EXIT_FAILURE;
 }
-
-int main() {
-	main_0415(3, "text.md", "result.md");
-}

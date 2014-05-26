@@ -5,11 +5,17 @@
 #include <assert.h>
 
 enum EToken {
-	tEnd,
-	tError,
-	tNumber,
-	tPlus,
-	tMult
+	tEnd,		// end
+	tError,		// error
+	tNumber,	// literal number
+	tPlus,		// +
+	tMult,		// *
+	tMinus,		// -
+	tDivide,	// /
+	tLParen,	// (
+	tRParen,	// )
+	tAssign,	// =
+	tIdent		// identifier
 };
 
 class Scanner {
@@ -28,6 +34,8 @@ public:
 		assert(_token == tNumber);
 		return _number;
 	}
+
+	void symbolName(char* strOut, int& len);
 
 private:
 	const char* _buf;

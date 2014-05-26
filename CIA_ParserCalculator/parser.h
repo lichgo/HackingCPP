@@ -14,6 +14,7 @@ enum Status {
 class Parser {
 public:
 	Parser(Scanner& scanner, SymbolTable& symTab);
+	Parser();
 	~Parser();
 	Status eval();
 private:

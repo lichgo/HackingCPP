@@ -1,5 +1,6 @@
 #include "scanner.h"
 
+#include <assert.h>
 #include <iostream>
 
 using namespace std;
@@ -13,6 +14,7 @@ void Scanner::skipSpaces() {
 	while (isspace(_buf[_iLook])) ++_iLook;
 }
 
+// find the current possible token
 EToken Scanner::accept() {
 	skipSpaces();
 
@@ -27,20 +29,48 @@ EToken Scanner::accept() {
 		break;
 	case '0': case '1': case '2': case '3': case '4':
 	case '5': case '6': case '7': case '8': case '9':
+	case '.':
 		_token = tNumber;
-		// convert char to number
-		_number = atoi(&_buf[_iLook]);
-		// move _iLook to the first non-digit
-		while (isdigit(_buf[_iLook]))
-			++_iLook;
+		char* p;
+		// find the nearest possible number
+		_number = strtod(&_buf[_iLook], &p);
+		// update _iLook: the starting of the next token
+		_iLook = p - _buf;
 		break;
 	case '\0':
 		_token = tEnd;
 		break;
 	default:
-		_token = tError;
+		if (isalpha(_buf[_iLook]) || _buf[_iLook] == ' ') {
+			_token = tIdent;
+			_iSymbol = _iLook;
+
+			int cLook;
+
+			do {
+				++_iLook;
+				cLook = _buf[_iLook];
+			} while (isalnum(cLook) || cLook == '_');
+
+			_lenSymbol = _iLook - _iSymbol;
+
+			if (_lenSymbol > maxSymLen)
+				lenSymbol = maxSymLen;
+		}
+		else {
+			_token = tError;
+		}
 		break;
 	}
 
 	return _token;
+}
+
+void Scanner::symbolName(char* strOut, int& len) {
+	assert(len >= maxSymLen);
+	assert(_lenSymbol <= maxSymLen);
+
+	strncpy(strOut, &_buf[_iSymbol], _lenSymbol);
+	strOut[_lenSymbol] = 0;
+	len = _lenSymbol;
 }

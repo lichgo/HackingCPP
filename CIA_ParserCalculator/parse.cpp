@@ -15,3 +15,7 @@ Status Parser::eval() {
 	cout << "Evaluating...\n";
 	return QUIT;
 }
+
+Status Parser::Parser() {
+
+}

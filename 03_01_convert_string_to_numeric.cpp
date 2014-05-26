@@ -24,8 +24,3 @@ void main_0310() {
 
 	printf("The decimal numbers are: %ld, %ld, %ld, %ld.", li1, li2, li3, li4);
 }
-
-int main() {
-	char* pt;
-	main_0310();
-}

@@ -19,12 +19,9 @@ private:
 
 void main_using_explicit() {
 	HTable ht(13);
-	ht = 5;							// Creating HTable...5
+	//ht = 5;			
+									// Creating HTable...5
 									// Destroying HTable...5
 	cout << ht.getId() << endl;		// 5
 									// Destroying HTable...5
-}
-
-int main() {
-	main_using_explicit();
 }

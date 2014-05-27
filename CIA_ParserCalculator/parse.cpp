@@ -16,6 +16,6 @@ Status Parser::eval() {
 	return QUIT;
 }
 
-Status Parser::Parser() {
-
-}
+//Status Parser::Parser() {
+//
+//}

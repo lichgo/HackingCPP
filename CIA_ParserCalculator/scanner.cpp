@@ -15,6 +15,7 @@ void Scanner::skipSpaces() {
 }
 
 // find the current possible token
+
 EToken Scanner::accept() {
 	skipSpaces();
 
@@ -41,25 +42,25 @@ EToken Scanner::accept() {
 		_token = tEnd;
 		break;
 	default:
-		if (isalpha(_buf[_iLook]) || _buf[_iLook] == ' ') {
-			_token = tIdent;
-			_iSymbol = _iLook;
+		//if (isalpha(_buf[_iLook]) || _buf[_iLook] == ' ') {
+		//	_token = tIdent;
+		//	_iSymbol = _iLook;
 
-			int cLook;
+		//	int cLook;
 
-			do {
-				++_iLook;
-				cLook = _buf[_iLook];
-			} while (isalnum(cLook) || cLook == '_');
+		//	do {
+		//		++_iLook;
+		//		cLook = _buf[_iLook];
+		//	} while (isalnum(cLook) || cLook == '_');
 
-			_lenSymbol = _iLook - _iSymbol;
+		//	_lenSymbol = _iLook - _iSymbol;
 
-			if (_lenSymbol > maxSymLen)
-				lenSymbol = maxSymLen;
-		}
-		else {
-			_token = tError;
-		}
+		//	if (_lenSymbol > maxSymLen)
+		//		lenSymbol = maxSymLen;
+		//}
+		//else {
+		//	_token = tError;
+		//}
 		break;
 	}
 
@@ -67,10 +68,10 @@ EToken Scanner::accept() {
 }
 
 void Scanner::symbolName(char* strOut, int& len) {
-	assert(len >= maxSymLen);
-	assert(_lenSymbol <= maxSymLen);
+	//assert(len >= maxSymLen);
+	//assert(_lenSymbol <= maxSymLen);
 
-	strncpy(strOut, &_buf[_iSymbol], _lenSymbol);
-	strOut[_lenSymbol] = 0;
-	len = _lenSymbol;
+	//strncpy(strOut, &_buf[_iSymbol], _lenSymbol);
+	//strOut[_lenSymbol] = 0;
+	//len = _lenSymbol;
 }

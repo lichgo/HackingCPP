@@ -4,7 +4,7 @@ using namespace std;
 
 class HTable {
 public:
-	HTable(int id): _id(id) {
+	explicit HTable(int id): _id(id) {
 		cout << "Creating HTable..." << _id << endl;
 	}
 	~HTable() {
@@ -22,6 +22,7 @@ void main_using_explicit() {
 	ht = 5;							// Creating HTable...5
 									// Destroying HTable...5
 	cout << ht.getId() << endl;		// 5
+									// Destroying HTable...5
 }
 
 int main() {

@@ -59,7 +59,7 @@ Array<T>::Array(int len, T init) {
 	length = len;
 	a = new T[len];
 	for (int i = 0; i < len; ++i)
-		a[i] = T;
+		a[i] = init;
 }
 
 template<class T>

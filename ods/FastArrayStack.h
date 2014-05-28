@@ -42,7 +42,7 @@ void FastArrayStack<T>::add(int i, T x) {
 
 	std::copy_backwards((*a) + i, (*a) + number, (*a) + number + 1);
 
-	(*a)[i] = T;
+	(*a)[i] = x;
 
 	number++;
 }

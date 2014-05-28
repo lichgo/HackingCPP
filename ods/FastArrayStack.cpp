@@ -29,5 +29,5 @@ namespace ods {
 }
 
 int main() {
-	test_fastarraystack();
+	ods::test_fastarraystack();
 }

@@ -12,10 +12,11 @@ public:
 	FastArrayStack();
 	virtual ~FastArrayStack();
 	virtual void add(int i, T x);
+	virtual void add(T x) {
+		add(size(), x);
+	}
 	virtual T& remove(int i);
 protected:
-	using ArrayStack<T>::a;
-	using ArrayStack<T>::number;
 	virtual void resize();
 };
 
@@ -27,8 +28,8 @@ FastArrayStack<T>::~FastArrayStack() {}
 
 template<class T>
 void FastArrayStack<T>::resize() {
-	Array<T>* b = new Array<T>(max(2 * number, 1));
-	std::copy(*a, *a + number, *b);
+	Array<T>* b = new Array<T>( max(2 * number, 1) );
+	std::copy(*a + 0, *a + number, *b + 0);
 	a = b;
 }
 
@@ -40,7 +41,7 @@ void FastArrayStack<T>::add(int i, T x) {
 
 	if (number + 1 > a->length) resize();
 
-	std::copy_backwards((*a) + i, (*a) + number, (*a) + number + 1);
+	std::copy_backward(*a + i, *a + number, *a + number + 1);
 
 	(*a)[i] = x;
 

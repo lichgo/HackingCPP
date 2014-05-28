@@ -9,7 +9,7 @@ T min(const T& a, const T& b) {
 	return a < b ? a : b;
 }
 
-tempalte<class T> inline
+template<class T> inline
 T max(const T& a, const T& b) {
 	return a < b ? b : a;
 }

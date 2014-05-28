@@ -16,7 +16,7 @@ public:
 	virtual ~Array();
 	void fill(T x);
 	virtual void reverse();
-	static void copyOfRange(Array<T>& a, Array<T>& b, int i, intj);
+	static void copyOfRange(Array<T>& a, Array<T>& b, int i, int j);
 
 	Array<T>& operator=(Array<T>& b) {
 		if (a != NULL) delete[] a;
@@ -44,7 +44,7 @@ public:
 protected:
 	T* a;
 	
-}
+};
 
 template<class T>
 Array<T>::Array(int len) {
@@ -64,7 +64,7 @@ Array<T>::Array(int len, T init) {
 
 template<class T>
 Array<T>::~Array() {
-	if (a != NULL)
+	if (a != 0)
 		delete[] a;
 }
 
@@ -75,7 +75,7 @@ void Array<T>::reverse() {
 }
 
 template<class T>
-void Array<T>::fill(int x) {
+void Array<T>::fill(T x) {
 	std::fill(a, a + length, x);
 }
 

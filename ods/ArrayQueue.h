@@ -57,7 +57,7 @@ template<class T>
 void ArrayQueue<T>::resize() {
 	Array<T>* b = new Array<T>(max(2 * n, 1));
 	for (int i = 0; i < n; ++i)
-		(*b)[i] = (*a)[(cur + i) % n];
+		(*b)[i] = (*a)[(cur + i) % a->length];
 	a = b;
 	cur = 0;
 }

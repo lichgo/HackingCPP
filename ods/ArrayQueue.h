@@ -3,6 +3,7 @@
 #define ARRAYQUEUE_H_
 
 #include "Array.h"
+#include "utils.h"
 
 namespace ods {
 
@@ -24,10 +25,10 @@ protected:
 };
 
 template<class T>
-ArrayQueue<T>::ArrayQueue() : a(new Array(1)), n(0), cur(0) {}
+ArrayQueue<T>::ArrayQueue() : a(new Array<T>(1)), n(0), cur(0) {}
 
 template<class T>
-ArrayQueue::~ArrayQueue() {
+ArrayQueue<T>::~ArrayQueue() {
 	delete a;
 }
 
@@ -42,7 +43,7 @@ bool ArrayQueue<T>::add(T x) {
 template<class T>
 T& ArrayQueue<T>::remove() {
 	T& x = (*a)[cur];
-	j = (j + 1) % a->length;
+	cur = (cur + 1) % a->length;
 	n--;
 	if (a->length >= 3 * n) resize();
 	return x;

@@ -3,6 +3,7 @@
 #define ARRAYDEQUE_H_
 
 #include "Array.h"
+#include "utils.h"
 
 namespace ods {
 
@@ -72,12 +73,33 @@ T& ArrayDeque<T>::remove(int i) {
 
 	T& y = (*a)[(head + i) % a->length];
 
+	for (int j = i + 1; j < number; ++j)
+		(*a)[(head + j - 1) % a->length] = (*a)[(head + j) % a->length];
 
 	number--;
 
 	if (a->length >= 3 * number) resize();
 
 	return y;
+}
+
+template<class T>
+void ArrayDeque<T>::resize() {
+	Array<T>* b = new Array<T>(max(2 * number, 1));
+	for (int j = 0; j < number; ++j)
+		(*b)[j] = (*a)[(head + j) % a->length];
+	delete a;
+	a = b;
+	head = 0;
+}
+
+template<class T>
+void ArrayDeque<T>::clear() {
+	number = 0;
+	head = 0;
+	Array<T>* b = new Array<T>(1);
+	delete a;
+	a = b;
 }
 
 }

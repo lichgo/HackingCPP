@@ -1,12 +1,13 @@
-#include "ArrayStack.h"
+#include "DualArrayDeque.h"
 #include <iostream>
 
 using namespace std;
 
 namespace ods {
 
-	void test_arraystack() {
-		ArrayStack<int> asi;
+	void test_dualarraydeque() {
+		DualArrayDeque<int> asi;
+
 		cout << asi.size() << '\n';	//0
 
 		asi.add(0, 0);
@@ -33,5 +34,6 @@ namespace ods {
 }
 
 //int main() {
-//	ods::test_arraystack();
+//	// Problematic
+//	ods::test_dualarraydeque();
 //}

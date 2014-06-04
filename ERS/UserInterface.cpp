@@ -1,10 +1,80 @@
 #include <iostream>
-#include <stdexcpt>
+#include <stdexcpt.h>
 
 #include "Database.h"
 
 using namespace std;
 using namespace ERS;
+
+int displayMenu() {
+	int selection;
+
+	cout << "----------------------" << endl;
+	cout << "1 hire" << endl;
+	cout << "2 fire" << endl;
+	cout << "3 promote" << endl;
+	cout << "4 all" << endl;
+	cout << "5 current" << endl;
+	cout << "6 former" << endl;
+	cout << "0 quit" << endl;
+	cout << "----------------------" << endl;
+
+	cin >> selection;
+
+	return selection;
+}
+
+void doHire(Database& db) {
+	string firstName;
+	string lastName;
+
+	cout << "First name: ";
+	cin >> firstName;
+	cout << endl << "Last name: ";
+	cin >> lastName;
+
+	try {
+		db.addEmployee(firstName, lastName);
+		cout << "Employee " << firstName << " " << lastName << " has been hired." << endl;
+	}
+	catch (exception ex) {
+		cerr << "Unable to add new employee!" << endl;
+	}
+}
+
+void doFire(Database& db) {
+	int employeeNumber;
+
+	cout << "Employee number: ";
+	cin >> employeeNumber;
+
+	try {
+		db.getEmployee(employeeNumber).fire();
+		cout << "Employee " << employeeNumber << " has been fired." << endl;
+	}
+	catch (exception ex) {
+		cerr << "Unable to fire employee." << endl;
+	}
+}
+
+void doPromote(Database& db) {
+	int employeeNumber;
+	int raiseAmount;
+
+	cout << "Employee number: ";
+	cin >> employeeNumber;
+	cout << endl << "Raise amount: ";
+	cin >> raiseAmount;
+
+	try {
+		Employee& emp = db.getEmployee(employeeNumber);
+		emp.promote(raiseAmount);
+		cout << "Employee " << employeeNumber << " has been promoted by $" << raiseAmount << endl;
+	}
+	catch (exception ex) {
+		cerr << "Unable to promote the employee." << endl;
+	}
+}
 
 int main() {
 	Database db;
@@ -43,22 +113,4 @@ int main() {
 	cout << "Program exit." << endl;
 
 	return 0;
-}
-
-int displayMenu() {
-	int selection;
-
-	cout << "----------------------" << endl;
-	cout << "1 hire" << endl;
-	cout << "2 fire" << endl;
-	cout << "3 promote" << endl;
-	cout << "4 all" << endl;
-	cout << "5 current" << endl;
-	cout << "6 former" << endl;
-	cout << "0 quit" << endl;
-	cout << "----------------------" << endl;
-}
-
-void doFire(Database& db) {
-
 }

@@ -58,3 +58,7 @@ int displayMenu() {
 	cout << "0 quit" << endl;
 	cout << "----------------------" << endl;
 }
+
+void doFire(Database& db) {
+
+}

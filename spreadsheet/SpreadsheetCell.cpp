@@ -80,6 +80,12 @@ namespace spreadsheet {
 		if (istr.fail() || !istr.eof()) return 0;
 		return tmp;
 	}
+
+	const SpreadsheetCell operator+(const SpreadsheetCell& lhs, const SpreadsheetCell& rhs) {
+		SpreadsheetCell newCell;
+		newCell.set(lhs.mValue + rhs.mValue);
+		return newCell;
+	}
 }
 
 // Define a global operator+ to enable things like SpreadsheetCell sc = 3.4 + 2.3

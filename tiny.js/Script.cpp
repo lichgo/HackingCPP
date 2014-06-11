@@ -15,6 +15,7 @@ void js_dump(CScriptVar *v, void *userdata) {
 }
 
 int main(int argc, char **argv) {
+
 	CTinyJS *js = new CTinyJS();
 
 	registerFunction(js);
@@ -28,4 +29,26 @@ int main(int argc, char **argv) {
 	} catch (CScriptException *e) {
 		print("ERROR: %s\n", e->text.c_str());
 	}
+
+	while (js->evaluate("lets_quit") == "0") {
+		char buffer[2048];
+		gets(buffer);
+		if (buffer[0] == '\0') break;
+
+		try {
+			js->evaluate(buffer);
+		} catch (CScriptException *e) {
+			printf("ERROR: %s\n", e->text.c_str());
+		}
+	}
+
+	delete js;
+
+#ifdef _WIN32
+	#ifdef _DEBUG
+	_CrtDumpMemoryLeaks();
+	#endif
+#endif
+
+	return 0;
 }

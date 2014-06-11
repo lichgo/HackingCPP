@@ -10,6 +10,8 @@
 #define TRACE printf
 #endif
 
+using namespace std;
+
 const int TINYJS_LOOP_MAX_ITERATIONS = 8192;
 
 // Operators
@@ -89,41 +91,9 @@ enum SCRIPTVAR_FLAGS {
 #define TINYJS_TEMP_NAME ""
 #define TINYJS_BLANK_DATA ""
 
+
 // Convert wString into JS string
 wString getJSString(const wString &str);
-
-class CScriptException {
-public:
-	wString text;
-	CScriptException(const wString &exceptionText);
-};
-
-class CScriptLex {
-public:
-	CScriptLex(const wString &input);
-	CScriptLex(CScriptLex *owner, int startChar, int endChar);
-	~CScriptLex(void);	// strictly ensures no function arguments
-
-	char currCh, nextCh;
-	int tk;	// type of the token that we have
-	int tokenStart;	// position in the data at the beginning of the token we have here
-	int tokenEnd;	// position in the data at the last char of the token we have
-	int tokenLastEnd;	// position in the dta at the last char of the last token
-	wString tkStr;	// data contained in the token we have here
-
-	void match(int expected_tk);	// lexcial match wotsit
-	static wString getTokenStr(int token);	// get the string representation of the given token
-	void reset();	// reset the lex to restart
-
-	wString getSubString(int pos);	// rturn a sub-string from the given position up until right now
-	CScriptLex* getSubLex(int lastPosition);	// return a sub-lexer from the given position up until right now
-
-	wString getPosition(int pos=-1);	// return a string representing the position in lines and columns of the character pos given
-
-protected:
-
-
-};
 
 class CScriptVar;
 
@@ -135,14 +105,6 @@ class CScriptVarLink {
 
 class CScriptVar {
 
-};
-
-class CTinyJS {
-public:
-	CTinyJS();
-	~CTinyJS();
-
-	void execute(const wString &code);
 };
 
 

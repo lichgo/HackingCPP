@@ -1,3 +1,5 @@
+#include <iostream>
+
 int main() {
 
 	// Declaration
@@ -11,5 +13,11 @@ int main() {
 	class GraphNode;
 
 
-	// 
+	// Some undefined behaviros
+	int* p = 0;			// p is a null pointer
+	std::cout << *p;	// undefined behavior: dereferencing a NULL pointer
+
+	char name[] = "Darla";
+	char c = name[10];	// undefined bahavior
+
 }

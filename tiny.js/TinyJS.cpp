@@ -24,7 +24,7 @@ bool isNumber(const wString &str) {
 }
 
 bool isHexadecimal(char ch) {
-	return isdigit(ch) || (ch >= 'a' && ch <= 'z') || ( ch >= 'A' && ch <= 'Z');
+	return isdigit(ch) || (ch >= 'a' && ch <= 'f') || ( ch >= 'A' && ch <= 'F');
 }
 
 bool isAlpha(char ch) {

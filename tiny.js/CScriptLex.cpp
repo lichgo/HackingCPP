@@ -165,11 +165,134 @@ void CScriptLex::getNextToken() {
 			if (currCh == '\\') {
 				getNextCh();
 				switch (currCh) {
-					case 'n' : tkStr += '\n'
+					case 'n' : tkStr += '\n'; break;
+					case '"' : tkStr += '"'; break;
+					case '\\': tkStr += '\\'; break;
+					default: tkStr += currCh;
 				}
+			} else {
+				tkStr += currCh;
 			}
+			getNextCh();
+		}
+		getNextCh();
+		tk = LEX_STR;
+	} else if (currCh == '\'') {
+		getNextCh();
+		while (currCh && currCh != '\'') {
+			if (currCh == '\\') {
+				getNextCh();
+				switch (currCh) {
+					case 'n' : tkStr += '\n'; break;
+					case 'a' : tkStr += '\a'; break;
+					case 'r' : tkStr += '\r'; break;
+					case 't' : tkStr += '\t'; break;
+					case '\'': tkStr += '\''; break;		// TODO, ""
+					case '\\': tkStr += '\\'; break;
+					case 'x' : {
+						char buf[3] = "??";
+						getNextCh();
+						buf[0] = currCh;
+						getNextCh();
+						buf[1] = currCh;
+						tkStr += (char)strtol(buf, 0, 16);
+						break;
+					}
+					default: {
+						if (currCh >= '0' && currCh <= '7') {
+							char buf[4] = "???";
+							buf[0] = currCh;
+							getNextCh(); 
+							buf[1] = currCh;
+							getNextCh();
+							buf[2] = currCh;
+							tkStr += (char)strtol(buf, 0, 8);
+						} else {
+							tkStr += currCh;
+						}
+					}
+				}
+			} else {
+				tkStr += currCh;
+			}
+			getNextCh();
+		}
+		getNextCh();
+		tk = LEX_STR;
+	} else {	
+		// single chars
+		tk = currCh;
+		if (currCh) getNextCh();
+
+		if (tk == '=' && currCh == '=') {	// ==
+			tk = LEX_EQUAL;
+			getNextCh();
+			if (currCh == '=') {			// ===
+				tk = LEX_TYPEEQUAL;
+				getNextCh();
+			}
+		} else if (tk == '!' && currCh == '=') {	// !=
+			tk = LEX_NEQUAL;
+			getNextCh();
+			if (currCh == '=') {
+				tk = LEX_NTYPEEQUAL;				// !==
+				getNextCh();
+			}
+		} else if (tk == '<' && currCh == '=') {
+			tk = LEX_LEQUAL;
+			getNextCh();
+		} else if (tk == '<' && currCh == '<') {
+			tk = LEX_LSHIFT;
+			getNextCh();
+			if (currCh == '=') {
+				tk = LEX_LSHIFTEQUAL;
+				getNextCh();
+			}
+		} else if (tk == '>' && currCh == '=') {
+			tk = LEX_GEQUAL;
+			getNextCh();
+		} else if (tk == '>' && currCh == '>') {
+			tk = LEX_RSHIFT;
+			getNextCh();
+			if (currCh == '=') {
+				tk = LEX_RSHIFTEQUAL;
+				getNextCh();
+			} else if (currCh == '>') {
+				tk = LEX_RSHIFTUNSIGNED;
+				getNextCh();
+			}
+		} else if (tk == '+' && currCh == '=') {
+			tk = LEX_PLUSEQUAL;
+			getNextCh();
+		} else if (tk = '-' && currCh == '=') {
+			tk = LEX_MINUSEQUAL;
+			getNextCh();
+		} else if (tk == '+' && currCh == '+') {
+			tk = LEX_PLUSPLUS;
+			getNextCh();
+		} else if (tk == '-' && currCh == '-') {
+			tk = LEX_MINUSMINUS;
+			getNextCh();
+		} else if (tk == '&' && currCh == '=') {
+			tk = LEX_ANDEQUAL;
+			getNextCh();
+		} else if (tk == '&' && currCh == '&') {
+			tk = LEX_ANDAND;
+			getNextCh();
+		} else if (tk == '|' && currCh == '=') {
+			tk = LEX_OREQUAL;
+			getNextCh();
+		} else if (tk == '|' && currCh == '|') {
+			tk = LEX_OROR;
+			getNextCh();
+		} else if (tk == '^' && currCh == '=') {
+			tk = LEX_XOREQUAL;
+			getNextCh();
 		}
 	}
+
+	tokenLastEnd = tokenEnd;
+	tokenEnd = dataPos - 3;
 }
 
 
